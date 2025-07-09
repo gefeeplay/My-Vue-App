@@ -6,6 +6,37 @@
     <title>Трекер привычек</title>
 </head>
 <body>
-    
+    <div>
+        <form onsubmit="submit()">
+            <h1>Редактирование привычки</h1>
+            <div class="form-group">
+                <label for="habitName">Название привычки</label>
+                <input type="text" id="habitName" name="habitName" required>
+            </div>
+            <div>
+                <label for="descryption">Описание привыки
+                </label>
+                <textarea id="descryption"></textarea>
+            </div>
+            <div><label for="frequency">Частота выполнения
+                </label>
+                <select id="frequency">
+                    <option value="1">Каждый день</option>
+                    <option value="7">Каждую неделю</option>
+                    <option value="30">Каждый месяц</option>
+                </select></div>
+            <div>
+                <label for="count">Количество повторений</label>
+                <input id="count" type="number"></input>
+            </div>
+            <div>Общее количество выполнения: <span id="sum"></span></div>
+            <button type="submit">Сохранить</button>
+        </form>
+    </div>
+    <script>
+        function sumbit(){
+            alert("Сохранено")
+        }
+    </script>
 </body>
 </html>
