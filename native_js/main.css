@@ -44,5 +44,12 @@ button{
 }
 
 button:hover{
-    background-color: rgb(181, 228, 181);;
+    background-color: rgb(181, 228, 181);
+}
+
+option{
+    background-color: rgb(220, 243, 220);
+}
+option:hover{
+    background-color: rgb(181, 228, 181);
 }
