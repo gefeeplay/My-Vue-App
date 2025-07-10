@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Трекер привычек</title>
+    <link rel="stylesheet" href="main.css"></link>
 </head>
 <body>
-    <div>
-        <form onsubmit="submit()">
+    <div class="container">
+        <form onsubmit="sumbitButton()">
             <h1>Редактирование привычки</h1>
             <div class="form-group">
                 <label for="habitName">Название привычки</label>
@@ -41,7 +42,7 @@
         </form>
     </div>
     <script>
-        function sumbit(){
+        function sumbitButton(){
             alert("Сохранено")
         }
     </script>
