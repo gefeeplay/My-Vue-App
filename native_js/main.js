@@ -55,9 +55,15 @@ countInput.addEventListener('input', countInputHandler)
 
 function setSum(){
     let res = "Не подсчитано"
-    if(frequency == undefined){res = "Не указана частота"}
-    else if (count == undefined){res = "Не указан период"}
-    else {res = (frequency * count).toString()}
+    if(frequency == undefined){
+            res = "Не указана частота"
+    }
+    else if (count == undefined){
+        res = "Не указано количество повторений"
+    }
+    else {
+        res = (frequency * count).toString()
+    }
     
     sumElement.textContent = res
     //console.log(res)
