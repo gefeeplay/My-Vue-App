@@ -1,70 +1,92 @@
-let name = ''
-let descryption = ''
-let frequency = ''
-let count = 0
-let sum = 0
-let res = ""
+const totalElement = document.querySelector("#sum")
 
-const nameInput = document.querySelector("#habitName")
-const descryptionInput = document.querySelector("#descryption")
-const frequencySelect = document.querySelector("#frequency")
-const countInput = document.querySelector("#count")
-const sumElement = document.querySelector("#sum")
-
-setSum()
-
-function nameInputHandler(event){
-    name = event.target.value
-    //console.log('name:',name)
+const Habit = {
+    name:'',
+    descryption: '',
+    frequency: 0,
+    count: 0,
+    sum: 0,
 }
 
-nameInput.addEventListener('input', nameInputHandler)
-
-function descriptionChangeHandler(event){
-    descryption = event.target.value
-    //console.log('desc:', descryption)
+const nameMeta = {
+    selector: document.querySelector('habitName'),
+    handler(event) {
+        Habit.name = event.target.value
+        console.log(name)
+    }
 }
 
-descryptionInput.addEventListener('input', descriptionChangeHandler)
-
-function frequencyChange(event){
-    if (event.target.value == undefined){
-        frequency = 0
+const descryptionMeta = {
+    selector: document.querySelector('descrption'),
+    handler(event) {
+        Habit.name = event.target.value
+        console.log(name)
     }
-    else {
-        frequency = parseInt(event.target.value)
-    }
-    //console.log('frequency:', frequency)
-    setSum()
 }
 
-frequencySelect.addEventListener('change', frequencyChange)
-
-function countInputHandler(event){
-    if (event.target.value == undefined || NaN){
-        count = 0
+const frequencyMeta = {
+    selector: document.querySelector('frequency'),
+    handler(event){
+        Habit.name = event.target.value
+        console.log(name)
     }
-    else {
-       count = parseInt(event.target.value)
-    }
-    //console.log('count:', count)
-    setSum()
 }
 
-countInput.addEventListener('input', countInputHandler)
+const countMeta = {
+    selector: document.querySelector('count'),
+    handler(event){
+        Habit.name = event.target.value
+        console.log(name)
+    }
 
-function setSum(){
-    let res = "Не подсчитано"
-    if(frequency == undefined){
-            res = "Не указана частота"
-    }
-    else if (count == undefined){
-        res = "Не указано количество повторений"
-    }
-    else {
-        res = (frequency * count).toString()
-    }
-    
-    sumElement.textContent = res
-    //console.log(res)
 }
+
+const sumMeta = {
+    selector: document.querySelector('sum'),
+    handler(event) {
+        Habit.name = event.target.value
+        console.log(name)
+    }
+}
+
+const metaData = [nameMeta, descryptionMeta, frequencyMeta, countMeta, sumMeta]
+
+for (const meta of metaData){
+        meta.selector?.addEventListener('change', meta.handler)
+}
+
+
+const setSum = (Habit) =>{
+    let res = "Не подсчитано";
+    const frequencyValue = Habit.frequency;
+    const periodValue = Habit.count;
+
+    if (frequencyValue == undefined) {
+        res = "Не указана частота";
+    } else if (periodValue == undefined) {
+        res = "Не указан период";
+    } else {
+        res = (frequencyValue * periodValue).toString();
+    }
+
+    console.log(frequencyValue, periodValue);
+    totalElement.textContent = res;
+};
+
+
+
+const formElement = document.querySelector('form');
+formElement.addEventListener('submit', (event) =>{
+    ev.preventDefault(); // Предотвращаем стандартное поведение формы
+
+    // Проверяем, что все поля заполнены
+    if (!Habit.name || !Habit.description || Habit.frequency === undefined || Habit.period === undefined) {
+        alert("Пожалуйста, заполните все поля.");
+        return;
+    }
+
+    // Выводим данные в консоль в формате JSON
+    console.log(JSON.stringify(Habit));
+});
+
+setSum(Habit)
