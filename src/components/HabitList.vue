@@ -1,22 +1,23 @@
 <script setup>
 import { reactive } from "vue";
+import HabitlistItem from "./HabitlistItem.vue";
 
 const habitList = reactive([
   {
     name: "Бег",
-    description: "Бег в 7:00",
+    description: "Бег в 8:00",
     frequency: 1,
     count: 365,
   },
   {
     name: "Бег",
-    description: "Бег в 7:00",
+    description: "Бег в 9:00",
     frequency: 1,
     count: 365,
   },
   {
     name: "Бег",
-    description: "Бег в 7:00",
+    description: "Бег в 10:00",
     frequency: 1,
     count: 365,
   },
@@ -28,17 +29,17 @@ const deleteHandler = (idx) => {
 </script>
 
 <template>
-  <ul class="list">
-    <li v-for="(item, idx) in habitList" :key="idx" class="list-item">
-      <div style="font-weight: 700">Название: {{ item.name }}</div>
-      <div v-text="item.description"></div>
-      <p>
-        <template v-if="item.frequency === 1">Каждый день</template>
-        <template v-if="item.frequency === 7">Раз в неделю</template>
-        <template v-if="item.frequency === 30">Раз в месяц</template>
-      </p>
-      <button @click="deleteHandler(idx)">Удалить</button>
-    </li>
+ <ul class="list"> 
+    <h2 class="list-item">Список привычек:</h2>
+    <HabitlistItem v-for="(item, idx) in habitList"
+    :item="item"
+    :key="idx" 
+    class="list-item">
+      <template #action>
+        <button @click="deleteHandler(idx)" class="delBtn">Удалить</button>
+        <button @click="$emit('select:habit', item)" class="delBtn">Изменить</button>
+      </template>
+    </HabitlistItem> 
   </ul>
 </template>
 
@@ -46,15 +47,27 @@ const deleteHandler = (idx) => {
 .list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 10px;
   list-style: none;
+  align-items: auto;
 }
 .list-item {
+
+  min-width: 50%;
   background-color: white;
   border-radius: 1rem;
   padding: 10px;
 }
 .list-item:hover {
   background-color: rgb(248, 243, 243);
+}
+
+.delBtn{
+  max-width: 100px;
+  
+}
+
+h2{
+  margin: 0;
 }
 </style>

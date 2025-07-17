@@ -1,7 +1,7 @@
 <script setup>
 import {computed, reactive, ref, watch} from 'vue'
-const habit = reactive({});
-const sum = computed(() => habit.frequency * habit.count);
+const habit = defineModel({});
+const sum = computed(() => habit.value.frequency * habit.value.count);
 const label = ref();
 /*
 watch(() => {
