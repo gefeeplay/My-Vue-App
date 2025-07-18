@@ -1,5 +1,5 @@
 <script setup>
-import { reactive } from "vue";
+import { onMounted, reactive } from "vue";
 import HabitlistItem from "./HabitlistItem.vue";
 
 const habitList = reactive([
@@ -22,6 +22,26 @@ const habitList = reactive([
     count: 365,
   },
 ]);
+
+const fetchHabits = async () => {
+  try{
+    const response = await fetch('/habit')
+    const jsom = await response.json();
+    habitList.length = 0
+    if (Array.isArray(json)){
+      habitList.push(...json)
+    }
+    else{
+      habitList.push(jsom)
+    }
+  }
+  catch(error){
+    console.log(error)
+  }
+}
+onMounted(() =>{
+  fetchHabits()
+})
 
 const deleteHandler = (idx) => {
   habitList.splice(idx, 1);

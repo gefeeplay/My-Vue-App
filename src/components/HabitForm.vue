@@ -9,11 +9,21 @@ watch(() => {
 }, (newValue) => { 
     label.value = `${newValue?.name} ${newValue?.description}`
 })*/
+
+const postHabit = async () =>{
+    fetch('/habit', {
+        method: 'POST',
+        body: JSON.stringify(habit.value)
+    })
+    .catch (err => {
+        console.log(err)
+    });
+}
 </script>
 
 <template>
       <div class="container">
-        <form onsubmit="sumbitButton()">
+        <form @submit="postHabit()">
             <h1>Редактирование привычки</h1>
             {{ label }}
             <div class="form-group">
