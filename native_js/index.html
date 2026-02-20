@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трекер привычек</title>
+    <link rel="stylesheet" href="main.css"></link>
+</head>
+<body>
+    <div class="container">
+        <form onsubmit="sumbitButton()">
+            <h1>Редактирование привычки</h1>
+            <div class="form-group">
+                <label for="habitName">Название привычки</label>
+                <input type="text" id="habitName" name="habitName" required>
+            </div>
+        </br>
+            <div>
+                <label for="descryption">Описание привыки
+                </label>
+                <textarea id="descryption"></textarea>
+            </div>
+        </br>    
+            <div><label for="frequency">Частота выполнения
+                </label>
+                <select id="frequency">
+                    <option value="1">Каждый день</option>
+                    <option value="7">Каждую неделю</option>
+                    <option value="30">Каждый месяц</option>
+                </select>
+            </div>
+        </br>            
+            <div>
+                <label for="count">Количество повторений</label>
+                <input id="count" type="number"></input>
+            </div>
+        </br>    
+            <div id="SumElement">Общее количество выполнения: <span id="sum"></span></div>
+            </br>
+            <button type="submit">Сохранить</button>
+            <button type="button">Нажатие</button>
+        </form>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
